@@ -18,3 +18,13 @@ docker run -d --name pushimage -p 3000:3000 --link imagemeta:mongo zhengsl/satim
 注：
 使用fig进行封装用于自动化操作
 11、推送镜像（docker login user/pw/email；docker push zhengsl/satimage）
+
+注：
+代码更新内容：
+1、配置文件路径与程序启动位置（设置node启动目录为bin）
+2、容器链接后，mongo的路径为（更新bin目录的clientMongoUtil.js line2）：
+  'mongodb://'+
+  process.env.MONGO_PORT_27017_TCP_ADDR+
+  ':'+
+  process.env.MONGO_PORT_27017_TCP_PORT+
+  '/sasmacDatabase'
