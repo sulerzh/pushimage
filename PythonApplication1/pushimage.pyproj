@@ -33,6 +33,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fig.yml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="fig.yml_bak">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="readme.txt" />
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
