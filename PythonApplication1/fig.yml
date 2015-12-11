@@ -1,8 +1,16 @@
 pushimage:
   image: zhengsl/satimage
   ports:
-   - "3000:3000"
+   - "80:3000"
   links:
-   - imagemeta
+   - imagemeta:mongo
+  volumes:
+   - /src/satimage:/opt/nodeapp:ro
+  working_dir: /opt/nodeapp/bin
+  command: node www
 imagemeta:
-    image: mongo
+  image: mongo
+  ports:
+   - "27017:27017"
+  volumes:
+   - /data/metadb:/data/metadb

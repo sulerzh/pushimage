@@ -7,7 +7,6 @@ RUN mkdir /data/tar
 RUN mkdir /data/image
 RUN mkdir -p /var/log/nodeapp
 
-VOLUME ["/src/satimage:/opt/nodeapp:ro"]
 VOLUME ["/data/tar:/data/tar"]
 VOLUME ["/data/image:/data/image"]
 VOLUME ["/var/log/nodeapp"]
@@ -20,5 +19,3 @@ ENV DOWNLOADLOG /var/log/nodeapp/download.log
 # RUN npm install
 
 EXPOSE 3000
-WORKDIR /opt/nodeapp/bin
-ENTRYPOINT ["node", "www"]

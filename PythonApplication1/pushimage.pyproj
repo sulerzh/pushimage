@@ -36,16 +36,10 @@
     <Content Include="fig.yml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="fig.yml_bak">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="host.sh">
       <SubType>Code</SubType>
     </Content>
     <Content Include="readme.txt" />
-    <Content Include="refine.txt">
-      <SubType>Code</SubType>
-    </Content>
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
   <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

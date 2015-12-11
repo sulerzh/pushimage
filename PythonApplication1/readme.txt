@@ -11,10 +11,12 @@
 10、构建并运行容器
 （
 docker run -d --name imagemeta mongo；
-docker run -d --name pushimage -p 3000:3000 --link imagemeta:mongo zhengsl/satimage
+docker run -d --name pushimage -p 80:3000 --link imagemeta:mongo zhengsl/satimage
 ）
 注：
-测试：（docker run -d --name pushimage -v "$(pwd)":/data --link imagemeta:mongo -p 3000:3000 zhengsl/satimage）
+测试：（docker run -d --name pushimage -v "$(pwd)":/data --link imagemeta:mongo -p 80:3000 zhengsl/satimage）
+
+docker run -d --name pushimage12 -v /src/satimage:/opt/nodeapp -w /opt/nodeapp/bin --link imagemeta:mongo -p 80:3000 zhengsl/satimage node www
 注：
 使用fig进行封装用于自动化操作
 11、推送镜像（docker login user/pw/email；docker push zhengsl/satimage）
