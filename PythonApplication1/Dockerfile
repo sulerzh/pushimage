@@ -1,17 +1,24 @@
 FROM node
 MAINTAINER zhengsl<zhengsl@satimage.cn>
 ENV REFRESHED_AT 2015-12-10
-# 运行新建目录命令
+
+RUN mkdir /data
+RUN mkdir /data/tar
+RUN mkdir /data/image
 RUN mkdir -p /var/log/nodeapp
-# 将构建目录中的satimage目录打包到容器的/opt/nodeapp目录
-ADD satimage /opt/nodeapp
-# 设置当前工作目录
-WORKDIR /opt/nodeapp/bin
-# 运行npm根据packages.json更新包
-# RUN npm install
-# 挂载目录
+
+VOLUME ["/src/satimage:/opt/nodeapp:ro"]
+VOLUME ["/data/tar:/data/tar"]
+VOLUME ["/data/image:/data/image"]
 VOLUME ["/var/log/nodeapp"]
-# 暴露3000端口
+
+ENV PORT 3000
+ENV ERRORLOG /var/log/nodeapp/error.log
+ENV DOWNLOADLOG /var/log/nodeapp/download.log
+
+# WORKDIR /opt/nodeapp
+# RUN npm install
+
 EXPOSE 3000
-# 接入点运行
+WORKDIR /opt/nodeapp/bin
 ENTRYPOINT ["node", "www"]

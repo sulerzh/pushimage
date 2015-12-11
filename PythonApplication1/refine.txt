@@ -1,0 +1,12 @@
+pushimage:
+  image: node
+  ports:
+   - "80:3000"
+  links:
+   - imagemeta
+imagemeta:
+  image: mongo
+  ports:
+   - "27017:27017"
+  volumes:
+   - /data/metadb:/data/metadb

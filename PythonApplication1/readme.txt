@@ -28,3 +28,11 @@ docker run -d --name pushimage -p 3000:3000 --link imagemeta:mongo zhengsl/satim
   ':'+
   process.env.MONGO_PORT_27017_TCP_PORT+
   '/sasmacDatabase'
+
+3、修改日志路径为挂载点路径（更新bin目录的clientFunction.js line 17/18）：
+var logPath = process.env.ERRORLOG || proContent.logPath;
+var downLog = process.env.DOWNLOADLOG || proContent.downLog;
+	
+
+3、构建临时容器查看已运行容器中的日志信息
+	docker run -ti -rm --volumes-from pushimage ubuntu cat /var/log/nodeapp/error.log
